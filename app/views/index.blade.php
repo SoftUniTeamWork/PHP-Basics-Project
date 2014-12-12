@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Start page</title>
-</head>
-<body>
-<h1>Test</h1>
-</body>
-</html>
+@extends('layout')
+
+@section('content')
+	@foreach($users as $key => $value)
+		@if($value['user_type'] == '1')
+		<h1>This is Admin</h1>
+		@endif
+		<h2>{{$value['user_id']}}</h2>
+	@endforeach
+@stop
