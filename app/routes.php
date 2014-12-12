@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('get', 'PagesController@index');
-
-Route::get('/', 'HomeController@showWelcome');
+Route::get('/', 'PagesController@index');
