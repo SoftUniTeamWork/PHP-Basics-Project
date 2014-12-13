@@ -1,0 +1,1 @@
+<footer class="col_12 center">Copyrights 2014 Team London</footer>

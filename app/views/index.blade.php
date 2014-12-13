@@ -1,13 +1,24 @@
 @extends('layout')
 
 @section('content')
-	@if(Auth::check())
-	@foreach($posts as $key => $value)
-	<h2>Title - {{$value->post_title}}</h2>
-	<p>{{$value->post_text}}</p>
-	@endforeach
-	<a href="{{url('/logout')}}">Logout</a>
-	@else
-	<a href="{{url('/login')}}">Login</a>
-	@endif
+	<main class="center">
+		<section>
+		@if(Auth::check())
+		<a href="{{url('/post/create')}}" class="button green">Create post</a>
+		@endif
+		@foreach($posts as $key => $value)
+			<section>
+				<h3>{{ $value->post_title }}</h3>
+				<h6>Posted by: {{ User::find($value->user_id)->name }}</h6>
+				<p>{{ $value->post_text }}</p>
+				@if(Auth::check())
+					@if(Auth::user()->id == $value->user_id)
+						<a href="{{ url('/post/delete/' . $value->id) }}" class="button orange right">Delete</a>
+					@endif
+				@endif
+			</section>
+		@endforeach
+		</section>
+		@include('includes.sidebar')
+	</main>
 @stop

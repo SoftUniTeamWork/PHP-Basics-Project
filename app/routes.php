@@ -18,3 +18,9 @@ Route::get('/login', 'PagesController@showLogin');
 Route::post('/login', 'PagesController@doLogin');
 
 Route::get('/logout', 'PagesController@doLogout');
+
+Route::get('/post/create', 'PagesController@createPost');
+
+Route::post('/post/create', 'PostsController@create');
+
+Route::get('/post/delete/{id}', 'PostsController@destroy');

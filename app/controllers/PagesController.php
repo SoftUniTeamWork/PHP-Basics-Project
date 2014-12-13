@@ -7,6 +7,11 @@ class PagesController extends \BaseController {
 		return View::make("index");
 	}
 
+	public function createPost()
+	{
+		return View::make("pages.createPost");
+	}
+
 	public function showLogin()
 	{
 		return View::make('pages.login');

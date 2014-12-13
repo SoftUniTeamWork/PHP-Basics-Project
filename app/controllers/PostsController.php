@@ -22,7 +22,29 @@ class PostsController extends \BaseController {
 
 	public function create()
 	{
-		
+		$rules = array
+		(
+			'title' => 'required|min:3',
+			'text' => 'required|min:10',
+			'tags' => 'required'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails())
+		{
+			return Redirect::to('/post/create');
+		}
+		else
+		{
+			$post = new Post;
+			$post->post_title = Input::get('title');
+			$post->user_id = Auth::user()->id;
+			$post->post_text = Input::get('text');
+			$post->save();
+
+			return Redirect::to('/');
+		}
 	}
 
 	/**
@@ -80,7 +102,9 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$post = Post::find($id);
+		$post->delete();
+		return Redirect::to('/');
 	}
 
 
