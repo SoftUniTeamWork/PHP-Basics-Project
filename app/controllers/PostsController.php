@@ -42,7 +42,15 @@ class PostsController extends \BaseController {
 			$post->user_id = Auth::user()->id;
 			$post->post_text = Input::get('text');
 			$post->save();
-
+			$tags = explode(',', Input::get('tags'));
+			foreach($tags as $value)
+			{
+				$value = trim($value);
+				$tag = new Tag;
+				$tag->post_id = $post->id;
+				$tag->tag_text = $value;
+				$tag->save();
+			}
 			return Redirect::to('/');
 		}
 	}
@@ -90,7 +98,7 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
 	}
 
 

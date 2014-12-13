@@ -16,6 +16,7 @@ class CreateTagsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('post_id');
+			$table->string('tag_text', 100);
 			$table->timestamps();
 		});
 	}
