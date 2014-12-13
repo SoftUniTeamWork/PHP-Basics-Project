@@ -16,3 +16,5 @@ Route::get('/', 'PostsController@index');
 Route::get('/login', 'PagesController@showLogin');
 
 Route::post('/login', 'PagesController@doLogin');
+
+Route::get('/logout', 'PagesController@doLogout');
