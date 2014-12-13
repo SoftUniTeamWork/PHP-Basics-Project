@@ -9,7 +9,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$posts = Post::all();
+		return View::make('index')->with('posts', $posts);
 	}
 
 
@@ -18,11 +19,11 @@ class PostsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
 	public function create()
 	{
-		//
+		
 	}
-
 
 	/**
 	 * Store a newly created resource in storage.
@@ -43,7 +44,7 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
 
 

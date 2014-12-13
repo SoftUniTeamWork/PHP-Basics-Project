@@ -11,4 +11,8 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'PostsController@index');
+
+Route::get('/login', 'PagesController@showLogin');
+
+Route::post('/login', 'PagesController@doLogin');
