@@ -1,9 +1,12 @@
 @extends('layout')
 
 @section('content')
-	<form method="post" action="{{URL::to('pages.login')}}">
+	<form method="post">
 		<h1>Login</h1>
-		<p><!-- {{ $errors->first('email') }} {{ $errors->('password') }} --></p>
+		<p>
+			{{ $errors->first('email') }}
+			{{ $errors->first('password') }}
+		</p>
 		<p>
 			<label for="email">Email Addess</label>
 			<input type="text" name="email"/>
