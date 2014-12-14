@@ -20,7 +20,30 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+        $input = Input::all();
+        $rules = array (
+            'username' => 'required|min:4|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
+        );
+        $validator = Validator::make($input, $rules);
+
+        if($validator -> fails())
+        {
+            return Redirect::to('/registration')->with();
+        }
+        else
+        {
+            $user = new User;
+
+            $user -> username = Input::get('username');
+            $user -> email = Input::get('email');
+            $user -> password = Hash::make(Input::get('password'));
+            $user -> name = Input::get('name');
+
+            $user -> save();
+            return Redirect::to('/login');
+        }
 	}
 
 
@@ -31,7 +54,7 @@ class UsersController extends \BaseController {
 	 */
     public function store()
     {
-        Register::saveFormData(Input::except(array('_token')));
+
     }
 
 

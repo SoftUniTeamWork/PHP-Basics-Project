@@ -53,4 +53,9 @@ class PagesController extends \BaseController {
 			}
 		}
 	}
+
+    public function registration()
+    {
+        return View::make('pages.registration');
+    }
 }
