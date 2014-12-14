@@ -23,6 +23,12 @@ Route::get('/post/create', 'PagesController@createPost');
 
 Route::post('/post/create', 'PostsController@create');
 
+Route::get('/post/{id}', 'PostsController@show');
+
+Route::get('/post/edit/{post_id}', 'PagesController@editPost');
+
+Route::post('/comment/create', 'CommentsController@create');
+
 Route::get('/post/delete/{id}', 'PostsController@destroy');
 
 Route::get('/registration', 'PagesController@registration');

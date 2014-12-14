@@ -2,7 +2,6 @@
 
 @section('content')
 	@if(Auth::check())
-	<main class="center">
 		<form method="post" action="{{url('/post/create')}}">
 			<p>
 				<label for="title">Title</label>
@@ -18,6 +17,5 @@
 			</p>
 			<input type="submit" value="Create Post">
 		</form>
-	</main>
 	@endif
 @stop

@@ -1,29 +1,30 @@
 @extends('layout')
 
 @section('content')
-	<main class="center">
+	<section>
+	@if(Auth::check())
+	<a href="{{url('/post/create')}}" class="button green">Create post</a>
+	@endif
+	@foreach($posts as $key => $post)
 		<section>
-		@if(Auth::check())
-		<a href="{{url('/post/create')}}" class="button green">Create post</a>
-		@endif
-		@foreach($posts as $key => $value)
-			<section>
-				<h3>{{ $value->post_title }}</h3>
-				<h6>Posted by: {{ User::find($value->user_id)->name }}</h6>
-				<p>{{ $value->post_text }}</p>
-				<p>
-					@foreach(Tag::where('post_id', '=', $value->id)->get() as $index => $tag)
-						{{$tag->tag_text}}
-					@endforeach
-				</p>
-				@if(Auth::check())
-					@if(Auth::user()->id == $value->user_id)
-						<a href="{{ url('/post/delete/' . $value->id) }}" class="button orange right">Delete</a>
-					@endif
+			<h3>{{ $post->post_title }}</h3>
+			<h6>Posted by: {{ User::find($post->user_id)->name }}</h6>
+			<p>{{ $post->post_text }}</p>
+			<p>
+				@foreach(Tag::where('post_id', '=', $post->id)->get() as $index => $tag)
+					{{$tag->tag_text}}
+				@endforeach
+			</p>
+			@if(Auth::check())
+				@if(Auth::user()->id == $post->user_id || Auth::user()->user_level == '1')
+					<a href="{{ url('/post/delete/' . $post->id) }}" class="button orange right">Delete</a>
+					<a href="{{ url('/post/edit/' . $post->id) }}" class="button green right">Edit</a>
+					<a href="{{ url('/post/' . $post->id . '/comment') }}" class="button blue right">Comment this post</a>
 				@endif
-			</section>
-		@endforeach
+			@endif
+			
 		</section>
-		@include('includes.sidebar')
-	</main>
+	@endforeach
+	</section>
+	@include('includes.sidebar')
 @stop

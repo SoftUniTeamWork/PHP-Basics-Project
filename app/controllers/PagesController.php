@@ -10,7 +10,13 @@ class PagesController extends \BaseController {
 	public function createPost()
 	{
 		return View::make("pages.createPost");
-    	}
+    }
+
+    public function editPost($post_id)
+    {
+    	$post = Post::find($post_id);
+    	return View::make('posts.edit')->with('post', $post);
+    }
 
 	public function showLogin()
 	{

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 96);
 			$table->string('name', 96);
 			$table->smallInteger('age')->nullable();
+			$table->smallInteger('user_level')->default(0);
 			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});

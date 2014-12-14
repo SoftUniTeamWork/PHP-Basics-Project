@@ -7,6 +7,11 @@
 			return $this->hasMany('Comment');
 		}
 		
+		public function tags()
+		{
+			return $this->hasMany('Tag');
+		}
+
 		public function user()
 		{
 			return $this->belongsTo('User');
