@@ -3,7 +3,7 @@
 @section('content')
 
 @foreach($posts as $index => $post)
-    <p><a href="{{url('/',$post->post_title)}}">{{$post->post_title}}</a></p>
+    <p><a href="{{url('/',$post->id)}}">{{$post->post_title}}</a></p>
     <p>{{$post->created_at}}</p>
 @endforeach
 
