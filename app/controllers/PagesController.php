@@ -64,4 +64,18 @@ class PagesController extends \BaseController {
     {
         return View::make('pages.registration');
     }
+
+    public function results()
+    {
+        $input = Input::get('search');
+        $tags = Tag::where('tag_text','=', $input)->get();
+
+        $posts = [];
+        foreach($tags as $index => $tag)
+        {
+            $posts[] = Post::find($tag->post_id);
+        }
+
+        return View::make('pages.results')->with('posts', $posts);
+    }
 }

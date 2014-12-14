@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ul class="breadcrumbs alt1">
 <li><a href="{{url('/')}}">Home</a></li>
 <li><a href="{{url('/about')}}">About</a></li>
@@ -9,3 +10,7 @@
 <a href="{{url('/login')}}" class="right button blue">Login</a>
 @endif
 </ul>
+<form action="{{ url('/results') }}" method="GET">
+        <input id="search" type="text" placeholder="Type here" name="search">
+        <input id="submit" type="submit" value="Search">
+</form>
