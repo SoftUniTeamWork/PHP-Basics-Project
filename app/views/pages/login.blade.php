@@ -20,27 +20,30 @@
 		</p>
 	</form>
 	
-	<form action="post">
-	    <h1>Registration form</h1>
-	    
-	    <p>
-	        <label for="userName">User Name</label>
-	        <input type="text" name="userName"/>
-	    </p>
-	    <p>
-	        <label for="email">Email</label>
-	        <input type="text" name="email"/>
-	    </p>
-	    <p>
-	        <label for="passowrd">Password</label>
-	        <input type="password" name="password"/>
-	    </p>
-	    <p>
-        	 <label for="passowrd">Repeat Password</label>
-             <input type="password" name="passwordRepeat"/>
-        </p>
-        <p>
-        	 <input type="submit" value="Submit">
-        </p>
-	</form>
+	{{ Form::open(array('url' => 'registration')) }}
+
+            <p>User Name :</p>
+
+            <p>{{ Form::text('username') }}</p>
+
+            <p>Email :</p>
+
+            <p>{{ Form::text('email') }}</p>
+
+            <p>Password :</p>
+
+            <p>{{ Form::password('password') }}</p>
+
+             <p>Name:</p>
+
+             <p>{{ Form::text('name') }}</p>
+
+             <p>Age:</p>
+
+             <p>{{ Form::text('age') }}</p>
+
+            <p>{{ Form::submit('Submit') }}</p>
+
+
+    {{ Form::close() }}
 @stop

@@ -10,7 +10,7 @@ class PagesController extends \BaseController {
 	public function createPost()
 	{
 		return View::make("pages.createPost");
-	}
+    	}
 
 	public function showLogin()
 	{

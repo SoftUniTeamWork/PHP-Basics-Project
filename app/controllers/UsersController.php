@@ -29,10 +29,10 @@ class UsersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
-	}
+    public function store()
+    {
+        Register::saveFormData(Input::except(array('_token')));
+    }
 
 
 	/**
@@ -81,6 +81,7 @@ class UsersController extends \BaseController {
 	{
 		//
 	}
+
 
 
 }

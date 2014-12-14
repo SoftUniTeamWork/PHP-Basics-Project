@@ -24,3 +24,9 @@ Route::get('/post/create', 'PagesController@createPost');
 Route::post('/post/create', 'PostsController@create');
 
 Route::get('/post/delete/{id}', 'PostsController@destroy');
+
+Route::post('register_action', function()
+{
+    $obj = new UsersController() ;
+    return $obj->store();
+});
