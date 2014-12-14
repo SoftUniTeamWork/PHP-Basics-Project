@@ -28,3 +28,5 @@ Route::get('/post/delete/{id}', 'PostsController@destroy');
 Route::get('/registration', 'PagesController@registration');
 
 Route::post('/registration', 'UsersController@create');
+
+Route::get('/results', 'PagesController@results');
