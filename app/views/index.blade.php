@@ -15,15 +15,20 @@
 					{{$tag->tag_text}}
 				@endforeach
 			</p>
+			<p>
+				@foreach($post->comments()->get() as $comment)
+					<br/>{{$comment->comment_text}}
+				@endforeach
+			</p>
 			@if(Auth::check())
 				@if(Auth::user()->id == $post->user_id || Auth::user()->user_level == '1')
 					<a href="{{ url('/post/delete/' . $post->id) }}" class="button orange right">Delete</a>
 					<a href="{{ url('/post/edit/' . $post->id) }}" class="button green right">Edit</a>
 					<a id="commentButton{{ $post->id }}" class="button blue right toggle">Comment this post</a>
-					<section id="commentBox{{ $post->id }}" class="hide">
+					<form id="commentBox{{ $post->id }}" class="hide" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
 						Comment: <textarea name="text"></textarea>
-						<a href="{{ url('/post/' . 'comment/' . $post->id) }}" class="button blue">Comment</a>
-					</section>
+						<input type="submit" value="Comment" class="button blue"/>
+					</form>
 				@endif
 			@endif
 			

@@ -76,7 +76,9 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 		$post->visits_counter++;
+
 		$post->save();
+		
 		return View::make('posts.show')->withPost($post);
 	}
 
