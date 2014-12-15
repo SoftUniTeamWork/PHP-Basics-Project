@@ -65,7 +65,7 @@ class PagesController extends \BaseController {
         return View::make('pages.registration');
     }
 
-    public function results()
+    public function showSearchTag()
     {
         $input = Input::get('search');
         $tags = Tag::where('tag_text','=', $input)->get();
@@ -76,6 +76,6 @@ class PagesController extends \BaseController {
             $posts[] = Post::find($tag->post_id);
         }
 
-        return View::make('pages.results')->with('posts', $posts);
+        return View::make('pages.searchTagResult')->with('posts', $posts);
     }
 }

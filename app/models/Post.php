@@ -16,5 +16,7 @@
 		{
 			return $this->belongsTo('User');
 		}
+
+
 	}
  ?>

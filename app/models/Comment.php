@@ -6,5 +6,10 @@
 		{
 			return $this->belongsTo('Post');
 		}
+
+		public function user()
+		{
+			return $this->belongsTo('User');
+		}
 	}
  ?>
