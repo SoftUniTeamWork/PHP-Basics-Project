@@ -5,4 +5,4 @@
 <script src="{{URL::asset('js/ckeditor/ckeditor.js')}}"></script>
 <script src="{{ URL::asset('js/blog.js') }}"></script>
 <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" media="all" />
-<!-- <link rel="stylesheet" href="{{ URL::asset('css/blogstyle/style.css') }}" media="all" /> -->
+<link rel="stylesheet" href="{{ URL::asset('css/blogstyle.css') }}" media="all" />

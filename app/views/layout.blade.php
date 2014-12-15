@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="container">
-		<header class="col-lg-12">
+		<header>
 			@include('includes.header')
 		</header>
 		<main class="text-left col-md-8">

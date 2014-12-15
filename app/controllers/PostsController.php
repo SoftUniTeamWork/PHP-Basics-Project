@@ -10,9 +10,7 @@ class PostsController extends \BaseController {
 	public function index()
 	{
 		$posts = Post::all();
-        $recentPosts = Post::orderBy('created_at','desc')->paginate(10);
-        $mostVisited = Post::orderBy('visits_counter','desc')->paginate(10);
-		return View::make('index')->with('posts', $posts)->with("recentPosts",$recentPosts)->with("mostVisited",$mostVisited);
+		return View::make('index')->with('posts', $posts);
 	}
 
 
