@@ -1,4 +1,3 @@
-<aside class="right">
     <h3>Recent Posts</h3>
     <ul>
     @foreach($recentPosts as $post)
@@ -11,4 +10,3 @@
        <li><a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a></li>
     @endforeach
     </ul>
-</aside>
