@@ -18,7 +18,7 @@ class CommentsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($post_id)
 	{
 		
 	}

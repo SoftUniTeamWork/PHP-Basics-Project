@@ -75,6 +75,8 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 		$post = Post::find($id);
+		$post->visits_counter++;
+		$post->save();
 		return View::make('posts.show')->withPost($post);
 	}
 
@@ -87,7 +89,39 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$rules = array
+		(
+			'title' => 'required|min:3',
+			'text' => 'required|min:10',
+			'tags' => 'required'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails())
+		{
+			return Redirect::to('/post/edit/' . $id);
+		}
+		else
+		{
+			$post = Post::find($id);
+			$post->post_title = Input::get('title');
+			$post->post_text = Input::get('text');
+			$post->save();
+			foreach ($post->tags()->get() as $key => $tag) {
+				$tag->delete();
+			}
+			$tags = explode(',', Input::get('tags'));
+			foreach($tags as $value)
+			{
+				$value = trim($value);
+				$tag = new Tag;
+				$tag->post_id = $post->id;
+				$tag->tag_text = $value;
+				$tag->save();
+			}
+			return Redirect::to('/');
+		}
 	}
 
 
@@ -112,6 +146,10 @@ class PostsController extends \BaseController {
 	public function destroy($id)
 	{
 		$post = Post::find($id);
+		$tags = $post->tags()->get();
+		foreach ($tags as $key => $tag) {
+			$tag->delete();
+		}
 		$post->delete();
 		return Redirect::to('/');
 	}

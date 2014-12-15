@@ -27,7 +27,9 @@ Route::get('/post/{id}', 'PostsController@show');
 
 Route::get('/post/edit/{post_id}', 'PagesController@editPost');
 
-Route::post('/comment/create', 'CommentsController@create');
+Route::post('/post/edit/{post_id}', 'PostsController@edit');
+
+Route::post('/post/comment/{post_id}', 'CommentsController@create');
 
 Route::get('/post/delete/{id}', 'PostsController@destroy');
 
@@ -35,4 +37,4 @@ Route::get('/registration', 'PagesController@registration');
 
 Route::post('/registration', 'UsersController@create');
 
-Route::get('/results', 'PagesController@results');
+Route::get('/results', 'PagesController@showSearchTag');

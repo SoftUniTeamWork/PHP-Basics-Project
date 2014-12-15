@@ -6,13 +6,13 @@
 		<h6>Posted by: {{ User::find($post->user_id)->name }}</h6>
 		<p>{{ $post->post_text }}</p>
 		<p>
-			@foreach(Tag::where('post_id', '=', $post->id)->get() as $index => $tag)
-				{{$tag->tag_text}}
+			@foreach($post->tags()->get() as $tag)
+					{{$tag->tag_text}}
 			@endforeach
 		</p>
 		<section>
-			@foreach(Comment::where('post_id', '=', $post->id)->get() as $index => $comment)
-				<span>Commented by: {{User::find($comment->user_id)->name}}</span>
+			@foreach($post->comments as $comment)
+				<span>Commented by: {{ $comment->user->name }}</span>
 				<p>
 					{{$comment->comment_text}}
 				</p>
