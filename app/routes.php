@@ -38,3 +38,4 @@ Route::get('/registration', 'PagesController@registration');
 Route::post('/registration', 'UsersController@create');
 
 Route::get('/results', 'PagesController@showSearchTag');
+
