@@ -101,3 +101,9 @@ body > div > header > nav > form > input{
 {
     margin-right:0;
 }
+.deleteWarning:hover
+{
+    background-color: #C9302C;
+    color:#ffffff;
+}
+

@@ -29,7 +29,7 @@
 			<div class="btn-group" role="group" aria-label="...">
 				@if(Auth::check())
 					@if(Auth::user()->id == $post->user_id || Auth::user()->user_level == '1')
-						<a href="{{ url('/post/delete/' . $post->id) }}" class="btn btn-default">Delete</a>
+						<a href="{{ url('/post/delete/' . $post->id) }}" class="btn btn-default deleteWarning">Delete</a>
 						<a href="{{ url('/post/edit/' . $post->id) }}" class="btn btn-default">Edit</a>
 					@endif
 				@endif
