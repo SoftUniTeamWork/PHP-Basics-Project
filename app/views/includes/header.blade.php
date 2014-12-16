@@ -21,16 +21,13 @@
 				  <span class="input-group-addon glyphicon glyphicon-lock"></span>
 				  <input type="password" class="form-control" placeholder="Password" name="password">
 			</div>
-			<input type="submit" value="Login" class="btn btn-primary">
+			<input type="submit" value="Login" class="btn btn-primary login-margin">
+			<a href="{{url('/registration')}}" type="submit" class="btn btn-success">Registration</a>
 		</form>
+
 		<div class="error-display">
             {{ $errors->first('email') }}
             {{ $errors->first('password') }}
 		</div>
 	@endif
-	<!-- search  -->
-<!-- 	<form action="{{ url('/results') }}" method="GET">
-	        <input id="search" type="text" placeholder="Type here" name="search">
-	        <input id="submit" type="submit" value="Search">
-	</form> -->
 </nav>

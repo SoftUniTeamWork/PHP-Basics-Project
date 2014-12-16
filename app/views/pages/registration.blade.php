@@ -1,15 +1,15 @@
 @extends('layout')
 
 @section('content')
-
- <form action="{{ url('/registration') }}" class="text-center" method="POST" role="form">
+<div>
+ <form action="{{ url('/registration') }}" class="text-center" method="POST" role="form" id="registerForm">
       <section class="form-group">
           <label for="username">User Name :</label>
-          <input type="text" class="form-control col-lg-5" name="username" required>
+          <input type="text" class="form-control " name="username" required>
       </section>
       <section class="form-group">
           <label for="email">Email :</label>
-          <input type="email" class="form-control" name="email" required>
+          <input type="email" class="form-control" name="email" required placeholder="example@address.com">
       </section>
       <section class="form-group">
           <label for="password">Password :</label>
@@ -17,12 +17,13 @@
       </section>
       <section class="form-group">
           <label for="name">Name:</label>
-          <input type="text" class="form-control" name="name" >
+          <input type="text" class="form-control" name="name">
       </section>
       <section class="form-group">
           <label for="name">Age:</label>
-          <input type="text" class="form-control" name="age" >
+          <input type="text" class="form-control" name="age">
       </section>
-     <input type="submit" value="Register" class="btn btn-default">
+     <input type="submit" value="Registration" class="btn btn-default text-center registration">
      </form>
+</div>
 @stop
