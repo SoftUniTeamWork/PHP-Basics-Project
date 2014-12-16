@@ -13,8 +13,6 @@
 		
 		@else
 		<form method="post" action="{{url('/login')}}" class="navbar-form navbar-right">
-			{{ $errors->first('email') }}
-			{{ $errors->first('password') }}
 			<div class="input-group input-group-sm">
 				  <span class="input-group-addon">@</span>
 				  <input type="email" class="form-control" placeholder="Email" name="email">
@@ -25,6 +23,10 @@
 			</div>
 			<input type="submit" value="Login" class="btn btn-primary">
 		</form>
+		<div class="error-display">
+            {{ $errors->first('email') }}
+            {{ $errors->first('password') }}
+		</div>
 	@endif
 	<!-- search  -->
 <!-- 	<form action="{{ url('/results') }}" method="GET">

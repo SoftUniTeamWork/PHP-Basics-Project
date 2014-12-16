@@ -10,7 +10,7 @@
 			<p>
 				<label for="editor1">Text</label>
 				<textarea name="text" id="editor1" rows="10" cols="80">
-                                
+
                             </textarea>
                             <script>
                                 // Replace the <textarea id="editor1"> with a CKEditor
