@@ -3,12 +3,12 @@
 @section('content')
 	@if(Auth::check())
 		<form method="post" action="{{url('/post/create')}}">
+			<div class="input-group input-group-lg">
+				<label for="title"><h2>Title</h2></label>
+				<input type="text" name="title" class="form-control"/>
+			</div>
 			<p>
-				<label for="title">Title</label>
-				<input type="text" name="title" />
-			</p>
-			<p>
-				<label for="text">Text</label>
+				<label for="editor1">Text</label>
 				<textarea name="text" id="editor1" rows="10" cols="80">
                                 
                             </textarea>

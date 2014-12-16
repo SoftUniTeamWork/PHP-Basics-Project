@@ -2,7 +2,7 @@
 
 @section('content')
 	<section>
-	
+	{{var_dump($numPosts)}}
 	@foreach($posts as $post)
 		<article>
 			<h2><a href="{{ url('/post/' . $post->id) }}">{{ $post->post_title }}</a></h2>

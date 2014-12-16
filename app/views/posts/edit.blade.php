@@ -18,6 +18,28 @@
 		</p>
 		<input type="submit" value="Save changes">
 	</form>
+    			<div class="input-group input-group-lg">
+    				<label for="title"><h2>Title</h2></label>
+    				<input type="text" name="title" class="form-control" value="{{ $post->post_title }}"/>
+    			</div>
+    			<p>
+    				<label for="text">Text</label>
+    				<textarea name="text" id="text" rows="10" cols="80">
+                        {{ $post->post_text }}
+                     </textarea>
+                     <script>
+                         // Replace the <textarea id="editor1"> with a CKEditor
+                         // instance, using default configuration.
+                         CKEDITOR.replace( 'text' );
+                     </script>
+
+    			</p>
+    			<p>
+    				<label for="tags">Tags</label>
+    				<input type="text" name="tags" id="tags">
+    			</p>
+    			<input type="submit" value="Save changes">
+    		</form>
 	@endif
 	@endif
 @stop
