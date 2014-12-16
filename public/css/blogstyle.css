@@ -24,3 +24,8 @@ h2>a:hover
 {
 	text-decoration: none;
 }
+
+.commentBoxToggled
+{
+	display: none;
+}

@@ -14,7 +14,7 @@
 		</p>
 		<p>
 			<label for="tags">Tags</label>
-			<input type="text" name="tags" value="">
+			<input type="text" name="tags" value="{{ implode(', ', $post->tags()->get()->lists('tag_text')) }}">
 		</p>
 		<input type="submit" value="Save changes">
 	</form>

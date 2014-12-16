@@ -149,6 +149,11 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 		$tags = $post->tags()->get();
+		$comments = $post->comments()->get();
+
+		foreach ($comments as $key => $comment) {
+			$comment->delete();
+		}
 		foreach ($tags as $key => $tag) {
 			$tag->delete();
 		}

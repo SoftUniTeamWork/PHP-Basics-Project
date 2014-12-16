@@ -19,9 +19,8 @@
 			<p class="textPanel">{{ $post->post_text }}</p>
 			<p>
 				<span class="glyphicon glyphicon-tag"></span>
-					@foreach($post->tags()->get() as $tag)  
-						<a href="#">{{ $tag->tag_text }}</a> 
-					@endforeach
+					{{ implode(', ', $post->tags()->get()->lists('tag_text')) }}
+					
 			</p>
 			<div class="btn-group" role="group" aria-label="...">
 				@if(Auth::check())
@@ -29,15 +28,17 @@
 						<a href="{{ url('/post/delete/' . $post->id) }}" class="btn btn-default">Delete</a>
 						<a href="{{ url('/post/edit/' . $post->id) }}" class="btn btn-default">Edit</a>
 					@endif
-					<a id="commentButton{{ $post->id }}" class="btn btn-default">Comment this post</a>
-					<form id="commentBox{{ $post->id }}" class="hide" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
-							Comment: <textarea name="text"></textarea>
-							<input type="submit" value="Comment" class="button blue"/>
+					<a id="commentButton{{ $post->id }}" class="btn btn-default toggleButton">Comment this post</a>
+					<form id="commentBox{{ $post->id }}" class="commentBoxToggled" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
+						<section><textarea name="text"></textarea></section>
+						<input type="submit" value="Comment" class="button blue"/>
 					</form>
 				@else
-					<form id="commentBox{{ $post->id }}" class="hide" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
-							Comment: <textarea name="text"></textarea>
-							<input type="submit" value="Comment" class="button blue"/>
+					<a id="commentButton{{ $post->id }}" class="btn btn-default toggleButton">Comment this post</a>
+					<form id="commentBox{{ $post->id }}" class="commentBoxToggled" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
+					<input type="text" name="name"/><input type="email" name="email"/>
+						<section><textarea name="text"></textarea></section>
+						<input type="submit" value="Comment" class="button blue"/>
 					</form>
 				@endif
 			</div>
