@@ -2,7 +2,6 @@
 
 @section('content')
 	<section>
-	{{var_dump($numPosts)}}
 	@foreach($posts as $post)
 		<article>
 			<h2><a href="{{ url('/post/' . $post->id) }}">{{ $post->post_title }}</a></h2>
@@ -16,11 +15,10 @@
 					<span class="glyphicon glyphicon-time"></span> {{ date('j M Y', strtotime($post->created_at)) }}                        
 		        </section>
 		    </section>
-			<p class="textPanel">{{ $post->post_text }}</p>
+			<section class="textPanel container col-lg-12">{{ $post->post_text }}</section>
 			<p>
 				<span class="glyphicon glyphicon-tag"></span>
 					{{ implode(', ', $post->tags()->get()->lists('tag_text')) }}
-					
 			</p>
 			<div class="btn-group" role="group" aria-label="...">
 				@if(Auth::check())
