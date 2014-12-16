@@ -15,4 +15,10 @@
        <li class="list-group-item text-left"><a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a></li>
     @endforeach
     </ol>
+    <div class="panel-heading text-left">
+        <h3>Most Popular Tags</h3>
+    </div>
+    <ol type = "1" class="list-group">
+    
+    </ol>
 </div>

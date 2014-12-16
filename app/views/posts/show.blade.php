@@ -17,8 +17,7 @@
             <section class="textPanel container col-lg-12">{{ $post->post_text }}</section>
             <p>
                 <span class="glyphicon glyphicon-tag"></span>
-                    {{ implode(', ', $post->tags()->get()->lists('tag_text')) }}
-                    
+                    {{ implode(', ', $post->tags()->get()->lists('tag_text')) }} 
             </p>
             <div class="btn-group" role="group" aria-label="...">
                 @if(Auth::check())
