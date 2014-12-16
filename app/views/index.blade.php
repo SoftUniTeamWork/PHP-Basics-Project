@@ -7,7 +7,7 @@
 			<h2><a href="{{ url('/post/' . $post->id) }}">{{ $post->post_title }}</a></h2>
 		    <section class="row">
 		        <section class="group1 col-sm-6 col-md-6">
-		        	<span class="glyphicon glyphicon-user"></span>Posted by: {{ $post->user->name }}
+		        	<span class="glyphicon glyphicon-user"></span>Posted by: <a href="{{ url('/user/' . $post->user->username) }}">{{ $post->user->username }}</a>
 					
 		        </section>
 		        <section class="group2 col-sm-6 col-md-6">
@@ -15,7 +15,13 @@
 					<span class="glyphicon glyphicon-time"></span> {{ date('j M Y', strtotime($post->created_at)) }}                        
 		        </section>
 		    </section>
-			<section class="textPanel container col-lg-12">{{ $post->post_text }}</section>
+			<section class="textPanel container col-lg-12">
+				@if(strlen($post->post_text) > 800) 
+					{{ substr($post->post_text, 0, 800) . ' ...' }}
+				@else
+					{{ $post->post_text }}
+				@endif
+			</section>
 			<p>
 				<span class="glyphicon glyphicon-tag"></span>
 					{{ implode(', ', $post->tags()->get()->lists('tag_text')) }}
@@ -26,22 +32,11 @@
 						<a href="{{ url('/post/delete/' . $post->id) }}" class="btn btn-default">Delete</a>
 						<a href="{{ url('/post/edit/' . $post->id) }}" class="btn btn-default">Edit</a>
 					@endif
-					<a id="commentButton{{ $post->id }}" class="btn btn-default toggleButton">Comment this post</a>
-					<form id="commentBox{{ $post->id }}" class="commentBoxToggled" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
-						<section><textarea name="text"></textarea></section>
-						<input type="submit" value="Comment" class="button blue"/>
-					</form>
-				@else
-					<a id="commentButton{{ $post->id }}" class="btn btn-default toggleButton">Comment this post</a>
-					<form id="commentBox{{ $post->id }}" class="commentBoxToggled" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
-					<input type="text" name="name"/><input type="email" name="email"/>
-						<section><textarea name="text"></textarea></section>
-						<input type="submit" value="Comment" class="button blue"/>
-					</form>
 				@endif
 			</div>
 		</article>
 	@endforeach
+		<a href="{{ url('/page/{num}') }}" class="btn btn-default">Previous</a>
 	</section>
 	<script src="{{ URL::asset('js/blog.js') }}"></script>
 @stop

@@ -6,7 +6,7 @@
             <h2><a href="{{ url('/post/' . $post->id) }}">{{ $post->post_title }}</a></h2>
             <section class="row">
                 <section class="group1 col-sm-6 col-md-6">
-                    <span class="glyphicon glyphicon-user"></span>Posted by: {{ $post->user->name }}
+                    <span class="glyphicon glyphicon-user"></span>Posted by: <a href="{{ url('/user/' . $post->user->username) }}">{{ $post->user->username }}</a>
                     
                 </section>
                 <section class="group2 col-sm-6 col-md-6">
@@ -14,7 +14,7 @@
                     <span class="glyphicon glyphicon-time"></span> {{ date('j M Y', strtotime($post->created_at)) }}                        
                 </section>
             </section>
-            <p class="textPanel">{{ $post->post_text }}</p>
+            <section class="textPanel container col-lg-12">{{ $post->post_text }}</section>
             <p>
                 <span class="glyphicon glyphicon-tag"></span>
                     {{ implode(', ', $post->tags()->get()->lists('tag_text')) }}
@@ -26,28 +26,35 @@
                         <a href="{{ url('/post/delete/' . $post->id) }}" class="btn btn-default">Delete</a>
                         <a href="{{ url('/post/edit/' . $post->id) }}" class="btn btn-default">Edit</a>
                     @endif
-                    <a id="commentButton{{ $post->id }}" class="btn btn-default toggleButton">Comment this post</a>
-                    <form id="commentBox{{ $post->id }}" class="commentBoxToggled" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
-                        <section><textarea name="text"></textarea></section>
-                        <input type="submit" value="Comment" class="button blue"/>
-                    </form>
-                @else
-                    <a id="commentButton{{ $post->id }}" class="btn btn-default toggleButton">Comment this post</a>
-                    <form id="commentBox{{ $post->id }}" class="commentBoxToggled" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
-                    <input type="text" name="name"/><input type="email" name="email"/>
-                        <section><textarea name="text"></textarea></section>
-                        <input type="submit" value="Comment" class="button blue"/>
-                    </form>
                 @endif
             </div>
         </article>
-        <section>
+        <section class="postComments">
+            <h2>Comments</h2>
             @foreach($post->comments as $comment)
-                <span>Commented by: {{ $comment->user->name}}</span>
-                <p>
-                    {{$comment->comment_text}}
-                </p>
+                <section class="comment">
+                    <h4>Commented by: 
+                        @if($comment->comment_type == '0')
+                            <a href="{{ url('/user/' . $comment->user->username) }}">{{ $comment->user->name . '(' . $comment->user->username . ')' }}</a>
+                        @else
+                            {{ $comment->author_name }}
+                        @endif
+                    </h4>
+                    <p>
+                        {{$comment->comment_text}}
+                    </p>
+                </section>
             @endforeach
+            <form class="commentBox" role="form" method="post" action="{{ url('/post/' . 'comment/' . $post->id) }}">
+                {{ $errors->first('name') }}
+                {{ $errors->first('text') }}
+            @if(!Auth::check())
+                <input type="text" class="form-control" name="name" placeholder="Name" required/>
+                <input type="email" class="form-control" name="email" placeholder="Email(optional)"/>
+            @endif
+            <textarea class="form-control" name="text" required></textarea>
+            <input type="submit" class="form-control" value="Comment" class="btn btn-default"/>
+        </form>
         </section>
     @else
        	<h1>This post does not exist!</h1>

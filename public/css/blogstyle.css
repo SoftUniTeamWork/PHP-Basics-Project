@@ -25,7 +25,32 @@ h2>a:hover
 	text-decoration: none;
 }
 
-.commentBoxToggled
+.commentBox
 {
-	display: none;
+	border-top: 6px solid #bbb;
+	padding-top: 10px;
+}
+
+.postComments
+{
+	background-color: #ddd;
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.postComments>h2
+{
+	border-bottom: 2px solid white;
+}
+
+.comment
+{
+	
+	margin-bottom: 20px;
+}
+
+.comment>p
+{
+	background-color: white;
+	padding: 10px;
 }

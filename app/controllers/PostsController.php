@@ -75,10 +75,11 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 		$post = Post::find($id);
-		$post->visits_counter++;
-
-		$post->save();
-		
+		if(isset($post)) 
+		{
+			$post->visits_counter++;
+			$post->save();
+		}
 		return View::make('posts.show')->withPost($post);
 	}
 

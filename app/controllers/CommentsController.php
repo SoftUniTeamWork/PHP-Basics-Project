@@ -20,22 +20,35 @@ class CommentsController extends \BaseController {
 	 */
 	public function create($post_id)
 	{
-		$rules = array('text' => 'required|min:3');
-
+		$rules = array();
+		if(Auth::check())
+			$rules = array('text' => 'required|min:3');
+		else
+			$rules = array('text' =>'required|min:3',
+							'name' => 'required|min:4');
 		$validator = Validator::make(Input::all(), $rules);
 
 		if($validator->fails())
 		{
-			return Redirect::to('/login');
+			return Redirect::to('/post/' . $post_id)->withErrors($validator);
 		}
 		else
 		{
 			$comment = new Comment;
 			$comment->post_id = $post_id;
 			$comment->comment_text = Input::get('text');
-			$comment->user_id = Auth::user()->id;
+			if(Auth::check()){
+				$comment->user_id = Auth::user()->id;
+				$comment->comment_type = 0;
+				$comment->author_name = Auth::user()->name;
+			}
+			else
+			{
+				$comment->comment_type = 1;
+				$comment->author_name = Input::get('name');
+			}
 			$comment->save();
-			return Redirect::to('/');
+			return Redirect::to('/post/' . $post_id);
 		}
 	}
 

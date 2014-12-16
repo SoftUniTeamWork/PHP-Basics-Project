@@ -11,8 +11,6 @@
 			<a href="{{url('/logout')}}" class="btn btn-primary form-control">Logout</a>
 		</div>
 		
-		
-		
 		@else
 		<form method="post" action="{{url('/login')}}" class="navbar-form navbar-right">
 			{{ $errors->first('email') }}

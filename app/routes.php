@@ -39,4 +39,4 @@ Route::post('/registration', 'UsersController@create');
 
 Route::get('/results', 'PagesController@showSearchTag');
 
-Route::get('/user/{id}', 'UsersController@show');
+Route::get('/user/{username}', 'UsersController@show');
