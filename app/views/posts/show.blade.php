@@ -52,6 +52,12 @@
                             </div>
                         @else
                             {{ $comment->author_name }}
+                             @if(Auth::user()->user_level == '1')
+                             <div class="btn-group" role="group" aria-label="...">
+                                <a href="{{ url('/comment/delete/' . $comment->id) }}" class="btn btn-default deleteWarning">Delete</a>
+                                <a href="{{ url('/comment/edit/' . $comment->id) }}" class="btn btn-default">Edit</a>
+                            </div>
+                            @endif
                         @endif
                     </h4>
                     </section>
