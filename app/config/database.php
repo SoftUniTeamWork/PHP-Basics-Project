@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'blog_database',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'greenarm_blog_database',
+			'username'  => 'greenarm_root',
+			'password'  => '123123Gs',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
