@@ -188,7 +188,7 @@ body > div > header > nav > form > input{
     margin-left: 0px;
 }
 
-.btn {
+#button {
     height: 30px;
     position: absolute;
     right: 0;

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="search">
         <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" />
-         <button type="submit" class="btn btn-primary btn-sm">Search</button>
+         <button type="submit" id="button" class="btn btn-primary btn-sm">Search</button>
         </div>
     </div>
 
