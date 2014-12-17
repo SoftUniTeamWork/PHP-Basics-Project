@@ -9,7 +9,7 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::paginate(5);
+		$posts = Post::paginate(4);
 		$tags = array();
 		foreach ($posts as $post) {
 			$tags[] = $post->tags()->get()->lists('tag_text');
@@ -80,12 +80,13 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 		$tags = $post->tags()->get()->lists('tag_text');
+		$comments = $post->comments()->paginate(5);
 		if(isset($post)) 
 		{
 			$post->visits_counter++;
 			$post->save();
 		}
-		return View::make('posts.show')->withPost($post)->withTags($tags);
+		return View::make('posts.show')->withPost($post)->withTags($tags)->withComments($comments);
 	}
 
 

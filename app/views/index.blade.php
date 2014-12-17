@@ -43,8 +43,7 @@
 			</div>
 		</article>
 	@endfor
-		<a href="{{ url('/page/{num}') }}" class="btn btn-default pageButton">Previous</a>
-		<a href="{{ url('/page/{num}') }}" class="btn btn-default pull-right pageButton">Next</a>
+		<section class="pagination"> {{ $posts->links() }} </section>
 	</section>
 	<script src="{{ URL::asset('js/blog.js') }}"></script>
 @stop
