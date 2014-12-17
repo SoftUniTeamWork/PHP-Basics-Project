@@ -90,4 +90,9 @@ class PagesController extends \BaseController {
     {
         return View::make('pages.credits');
     }
+
+    public function showAbout()
+    {
+        return View::make('pages.about');
+    }
 }

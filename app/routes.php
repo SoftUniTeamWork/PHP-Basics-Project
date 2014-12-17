@@ -44,3 +44,5 @@ Route::get('/credits', 'PagesController@showCredits');
 Route::get('/searchByTag/{tagName}', 'PagesController@searchByTag');
 
 Route::get('/searchByTag', 'PagesController@searchByTagForm');
+
+Route::get('/about', 'PagesController@showAbout');
