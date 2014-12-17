@@ -96,34 +96,15 @@ class PagesController extends \BaseController {
 		}
 		elseif($option == 'postTitle')
 		{
-			$post = Post::where('post_title', '=', $input)->first();
-			if(isset($post))
-			{ 
-				$tags = $post->tags;
-				$tagsText = [];
-				foreach ($tags as $tag) {
-					$tagsText[] = $tag->tag_text;
-				}
-				$comments = $post->comments()->paginate(5);
-				if(isset($post)) 
-				{
-					$post->visits_counter++;
-					$post->save();
-				}
-				return View::make('posts.show')->withPost($post)->withTags($tagsText)->withComments($comments);
-			}
-			else
+			$post = Post::where('post_title', '=', $input);
+			$tags = $post->tags()->get()->lists('tag_text');
+			$comments = $post->comments()->paginate(5);
+			if(isset($post)) 
 			{
-				$posts = [];
-				foreach (Post::all() as $post) 
-				{
-					if(strpos($post->post_title, $input))
-					{
-						$posts[] = $post;
-					}
-				}
-				return View::make('pages.showSimilarPosts')->withPosts($posts);
+				$post->visits_counter++;
+				$post->save();
 			}
+			return View::make('posts.show')->withPost($post)->withTags($tags)->withComments($comments);
 		}
 		else
 		{
