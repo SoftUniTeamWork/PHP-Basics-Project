@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="search">
-        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" />
+        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" name="search"/>
          <button type="submit" class="btn btn-primary btn-sm">Search</button>
         </div>
     </div>
