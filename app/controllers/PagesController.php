@@ -80,6 +80,6 @@ class PagesController extends \BaseController {
     }
     public function showCredits()
     {
-        return View::make();
+        return View::make('pages.credits');
     }
 }

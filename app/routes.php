@@ -40,3 +40,5 @@ Route::post('/registration', 'UsersController@create');
 Route::get('/results', 'PagesController@showSearchTag');
 
 Route::get('/user/{username}', 'UsersController@show');
+
+Route::get('/credits', 'PagesController@showCredits');
