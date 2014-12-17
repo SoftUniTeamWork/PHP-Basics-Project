@@ -30,11 +30,11 @@
                       </tr>
                       <tr>
                         <td>Total comments:</td>
-                        <td>99999</td>
+                        <td>{{ count($user->comments) }}</td>
                       </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="btn btn-primary">View all commented posts</a>
+                  <a href="{{ url('/user/' . $user->username . '/comments') }}" class="btn btn-primary">View all commented posts</a>
                 </div>
               </div>
             </div>

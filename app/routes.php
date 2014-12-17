@@ -52,3 +52,5 @@ Route::get('/comment/delete/{id}', 'CommentsController@destroy');
 Route::get('/comment/edit/{id}', 'PagesController@editComment');
 
 Route::post('/comment/edit/{id}', 'CommentsController@edit');
+
+Route::get('/user/{id}/comments', 'UsersController@showAllComments');

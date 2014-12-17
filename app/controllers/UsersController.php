@@ -70,6 +70,13 @@ class UsersController extends \BaseController {
 		return View::make('users.show')->withUser($user);
 	}
 
+	public function showAllComments($username)
+	{
+		$user = User::where('username', '=', $username)->first();
+		
+		$comments = Comment::where('user_id', '=', $user->id)->paginate(5);
+		return View::make('users.showComments')->withComments($comments)->withUser($user);
+	}
 
 	/**
 	 * Show the form for editing the specified resource.
