@@ -75,15 +75,41 @@ class PagesController extends \BaseController {
     	return View::make('pages.searchByTag')->withTag($tagName)->withPosts($posts);
     }
 
-    public function searchByTagForm()
+    public function searchByForm()
     {
-    	$posts = [];
+    	$option = Input::get('sortBy');
 		$input = Input::get('search');
-    	$tags = Tag::where('tag_text','=', $input)->get();
-    	foreach ($tags as $tag) {
-    		$posts[] = $tag->post;
-    	}
-    	return View::make('pages.searchByTag')->withTag(Input::get('search'))->withPosts($posts);
+		if($option == 'tag')
+		{
+			$posts = [];
+			$tags = Tag::where('tag_text','=', $input)->get();
+	    	foreach ($tags as $tag) 
+	    	{
+	    		$posts[] = $tag->post;
+	    	}
+	    	return View::make('pages.searchByTag')->withTag(Input::get('search'))->withPosts($posts);
+		}
+		elseif($option == 'username')
+		{
+			$user = User::where('username', '=', $input)->first();
+			return View::make('users.show')->withUser($user);
+		}
+		elseif($option == 'postTitle')
+		{
+			$post = Post::where('post_title', '=', $input);
+			$tags = $post->tags()->get()->lists('tag_text');
+			$comments = $post->comments()->paginate(5);
+			if(isset($post)) 
+			{
+				$post->visits_counter++;
+				$post->save();
+			}
+			return View::make('posts.show')->withPost($post)->withTags($tags)->withComments($comments);
+		}
+		else
+		{
+			return View::make('pages.pageNotFound');
+		}
     }
 
     public function showCredits()
@@ -94,5 +120,10 @@ class PagesController extends \BaseController {
     public function showAbout()
     {
         return View::make('pages.about');
+    }
+
+    public function editComment($id)
+    {
+    	return View::make('comments.edit')->withComment(Comment::find($id));
     }
 }

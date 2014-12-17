@@ -38,13 +38,23 @@
             <h2>Comments</h2>
             @foreach($comments as $comment)
                 <section class="comment">
+                    <section>
                     <h4>Commented by: 
                         @if($comment->comment_type == '0')
                             <a href="{{ url('/user/' . $comment->user->username) }}">{{ $comment->user->name . '(' . $comment->user->username . ')' }}</a>
+                             <div class="btn-group" role="group" aria-label="...">
+                                @if(Auth::check())
+                                    @if(Auth::user()->id == $comment->user_id || Auth::user()->user_level == '1')
+                                        <a href="{{ url('/comment/delete/' . $comment->id) }}" class="btn btn-default deleteWarning">Delete</a>
+                                        <a href="{{ url('/comment/edit/' . $comment->id) }}" class="btn btn-default">Edit</a>
+                                    @endif
+                                @endif
+                            </div>
                         @else
                             {{ $comment->author_name }}
                         @endif
                     </h4>
+                    </section>
                     <p>
                         {{$comment->comment_text}}
                     </p>

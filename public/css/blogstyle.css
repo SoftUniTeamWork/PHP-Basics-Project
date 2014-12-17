@@ -145,3 +145,8 @@ body > div > header > nav > form > input{
 {margin-top:20px;
 }
 
+.inline
+{
+	display: inline-block;
+}
+

@@ -43,6 +43,12 @@ Route::get('/credits', 'PagesController@showCredits');
 
 Route::get('/searchByTag/{tagName}', 'PagesController@searchByTag');
 
-Route::get('/searchByTag', 'PagesController@searchByTagForm');
+Route::get('/searchByForm', 'PagesController@searchByForm');
 
 Route::get('/about', 'PagesController@showAbout');
+
+Route::get('/comment/delete/{id}', 'CommentsController@destroy');
+
+Route::get('/comment/edit/{id}', 'PagesController@editComment');
+
+Route::post('/comment/edit/{id}', 'CommentsController@edit');
