@@ -6,7 +6,7 @@
             <h2><a href="{{ url('/post/' . $post->id) }}">{{ $post->post_title }}</a></h2>
             <section class="row">
                 <section class="group1 col-sm-6 col-md-6">
-                    <span class="glyphicon glyphicon-user"></span>Posted by: <a href="{{ url('/user/' . $post->user->username) }}">{{ $post->user->username }}</a>
+                    <span class="glyphicon glyphicon-user"></span>Posted by: <a href="{{ url('/user/' . $post->user->username) }}"><span class="badge">{{ $post->user->username }}</span></a>
                     
                 </section>
                 <section class="group2 col-sm-6 col-md-6">
