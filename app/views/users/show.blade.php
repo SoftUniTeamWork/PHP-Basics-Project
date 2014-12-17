@@ -3,7 +3,7 @@
 @section('content')
 	@if(isset($user))
 	<section class="userPanel">
-        <div class=" col-lg-6" >
+        <div class=" col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 " >
           <div class="panel panel-info">
             <div class="panel-heading">
               <h1 class="panel-title"><span class="badge">{{$user->username}}</span></h1>
