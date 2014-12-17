@@ -42,3 +42,5 @@ Route::get('/results', 'PagesController@showSearchTag');
 Route::get('/user/{username}', 'UsersController@show');
 
 Route::get('/credits', 'PagesController@showCredits');
+
+Route::get('/about', 'PagesController@showAbout');

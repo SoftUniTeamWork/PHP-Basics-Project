@@ -23,6 +23,15 @@
         <h3>Most Popular Tags</h3>
     </div>
     <ol type = "1" class="list-group">
-    
+    <?php $tags =  array_count_values(Tag::all()->lists('tag_text'));
+            arsort($tags);
+            ?>
+        @foreach($tags as $tag => $count)
+            @if($count != 1)
+                <li class="list-group-item text-left"><a href="">{{$tag}}</a> is used {{ $count . ' '}}times </li>
+            @else
+                <li class="list-group-item text-left"><a href="">{{$tag}}</a> is used {{$count . ' '}} time </li>
+            @endif
+            @endforeach
     </ol>
 </div>

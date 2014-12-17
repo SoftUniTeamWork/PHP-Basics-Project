@@ -78,8 +78,14 @@ class PagesController extends \BaseController {
 
         return View::make('pages.searchTagResult')->with('posts', $posts);
     }
+
     public function showCredits()
     {
         return View::make('pages.credits');
+    }
+
+    public function showAbout()
+    {
+        return View::make('pages.about');
     }
 }

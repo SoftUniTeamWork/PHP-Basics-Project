@@ -11,7 +11,7 @@
 					
 		        </section>
 		        <section class="group2 col-sm-6 col-md-6">
-					<span class="glyphicon glyphicon-pencil"></span> <a href="#">{{ count($post->comments()->get()) . ' Comments'}}</a>                            
+					<span class="glyphicon glyphicon-pencil"></span>{{ count($post->comments()->get()) . ' Comments'}}
 					<span class="glyphicon glyphicon-time"></span> {{ date('j M Y', strtotime($post->created_at)) }}                        
 		        </section>
 		    </section>
