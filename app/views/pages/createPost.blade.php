@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	@if(Auth::check())
+	@if(Auth::check() && Auth::user()->user_level == '1')
 		<form method="post" action="{{url('/post/create')}}">
 			<div class="input-group input-group-lg">
 				<label for="title"><h2>Title</h2></label>
@@ -24,5 +24,7 @@
 			</p>
 			<input type="submit" value="Create Post">
 		</form>
+		@else
+		<h1>You don't have the rights to create posts!</h1>
 	@endif
 @stop

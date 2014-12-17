@@ -17,7 +17,13 @@
             <section class="textPanel container col-lg-12">{{ $post->post_text }}</section>
             <p>
                 <span class="glyphicon glyphicon-tag"></span>
-                    {{ implode(', ', $post->tags()->get()->lists('tag_text')) }} 
+                    @for($j = 0; $j < count($tags); $j++)
+                        @if($j == count($tags) - 1)
+                            <a href="{{ url('/searchByTag/' . $tags[$j]) }}">{{ $tags[$j] }} </a>
+                        @else
+                            <a href="{{ url('/searchByTag/' . $tags[$j]) }}">{{ $tags[$j] }} </a> {{ ', ' }}
+                        @endif
+                    @endfor
             </p>
             <div class="btn-group" role="group" aria-label="...">
                 @if(Auth::check())

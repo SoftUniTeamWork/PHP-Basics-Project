@@ -107,3 +107,7 @@ body > div > header > nav > form > input{
     color:#ffffff;
 }
 
+.pageButton
+{
+	width: 150px;
+}

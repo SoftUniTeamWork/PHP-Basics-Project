@@ -65,19 +65,27 @@ class PagesController extends \BaseController {
         return View::make('pages.registration');
     }
 
-    public function showSearchTag()
+    public function searchByTag($tagName)
     {
-        $input = Input::get('search');
-        $tags = Tag::where('tag_text','=', $input)->get();
-
-        $posts = [];
-        foreach($tags as $index => $tag)
-        {
-            $posts[] = Post::find($tag->post_id);
-        }
-
-        return View::make('pages.searchTagResult')->with('posts', $posts);
+    	$posts = [];
+    	$tags = Tag::where('tag_text', '=', $tagName)->get();
+    	foreach ($tags as $tag) {
+    		$posts[] = $tag->post;
+    	}
+    	return View::make('pages.searchByTag')->withTag($tagName)->withPosts($posts);
     }
+
+    public function searchByTagForm()
+    {
+    	$posts = [];
+		$input = Input::get('search');
+    	$tags = Tag::where('tag_text','=', $input)->get();
+    	foreach ($tags as $tag) {
+    		$posts[] = $tag->post;
+    	}
+    	return View::make('pages.searchByTag')->withTag(Input::get('search'))->withPosts($posts);
+    }
+
     public function showCredits()
     {
         return View::make('pages.credits');

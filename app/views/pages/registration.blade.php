@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
- <form action="{{ url('/registration') }}" class="text-center" method="POST" role="form" id="registerForm">
+ <form action="{{ url('/registration') }}" class="text-center" method="post" role="form" id="registerForm">
       <section class="form-group">
           <label for="username">User Name :</label>
           <input type="text" class="form-control " name="username" required>

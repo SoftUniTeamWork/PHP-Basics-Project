@@ -26,6 +26,10 @@
 		</p>
 		<input type="submit" value="Save changes">
 	</form>
+	@else
+	<h1>You don't have the rights!</h1>
 	@endif
+	@else
+	<h1>You don't have the rights!</h1>
 	@endif
 @stop

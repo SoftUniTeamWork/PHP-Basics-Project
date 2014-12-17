@@ -7,7 +7,9 @@
 	</ul>
 	@if(Auth::check())
 		<div class="input-group input-group-sm pull-right">
-			<a href="{{url('/post/create')}}" class="btn btn-default form-control" >Create post</a>
+			@if(Auth::user()->user_level == '1')
+				<a href="{{url('/post/create')}}" class="btn btn-default form-control" >Create post</a>
+			@endif
 			<a href="{{url('/logout')}}" class="btn btn-primary form-control">Logout</a>
 		</div>
 		
@@ -15,11 +17,11 @@
 		<form method="post" action="{{url('/login')}}" class="navbar-form navbar-right">
 			<div class="input-group input-group-sm">
 				  <span class="input-group-addon">@</span>
-				  <input type="email" class="form-control" placeholder="Email" name="email">
+				  <input type="email" class="form-control" placeholder="Email" name="email" required>
 			</div>
 			<div class="input-group input-group-sm">
 				  <span class="input-group-addon glyphicon glyphicon-lock"></span>
-				  <input type="password" class="form-control" placeholder="Password" name="password">
+				  <input type="password" class="form-control" placeholder="Password" name="password" required>
 			</div>
 			<input type="submit" value="Login" class="btn btn-primary login-margin">
 			<a href="{{url('/registration')}}" type="submit" class="btn btn-success">Registration</a>
