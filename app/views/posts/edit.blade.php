@@ -14,8 +14,6 @@
                 {{ $post->post_text }}
              </textarea>
              <script>
-                 // Replace the <textarea id="editor1"> with a CKEditor
-                 // instance, using default configuration.
                  CKEDITOR.replace( 'text' );
              </script>
 
@@ -24,7 +22,7 @@
 			<label for="tags">Tags</label>
 			<input type="text" name="tags" id="tags" value="{{ implode(', ', $post->tags()->get()->lists('tag_text')) }}">
 		</p>
-		<input type="submit" value="Save changes">
+		<input type="submit" class="btn btn-default" value="Save changes">
 	</form>
 	@else
 	<h1>You don't have the rights!</h1>

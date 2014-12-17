@@ -21,7 +21,7 @@
       </section>
       <section class="form-group">
           <label for="name">Age:</label>
-          <input type="text" class="form-control" name="age">
+          <input type="text" id="date" class="form-control" name="age">
       </section>
      <input type="submit" value="Registration" class="btn btn-default text-center registration">
      </form>

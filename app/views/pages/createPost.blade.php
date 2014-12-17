@@ -22,7 +22,7 @@
 				<label for="tags">Tags</label>
 				<input type="text" name="tags">
 			</p>
-			<input type="submit" value="Create Post">
+			<input type="submit" class="btn btn-default" value="Create Post">
 		</form>
 		@else
 		<h1>You don't have the rights to create posts!</h1>

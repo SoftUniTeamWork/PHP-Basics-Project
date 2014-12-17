@@ -30,7 +30,7 @@ class UsersController extends \BaseController {
 
         if($validator -> fails())
         {
-            return Redirect::to('/registration')->with();
+            return Redirect::to('/registration')->withErrors($validator);
         }
         else
         {

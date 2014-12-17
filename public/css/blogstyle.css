@@ -200,8 +200,3 @@ body > div > header > nav > form > input{
     margin-right: 5px;
     margin-left:10px;
 }
-.footerBottom
-{
-    position: fixed;
-    bottom:0;
-}
