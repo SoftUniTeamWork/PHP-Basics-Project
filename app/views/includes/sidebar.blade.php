@@ -1,12 +1,18 @@
 <div class="panel panel-default">
     <form action="{{ url('/searchByForm') }}" method="GET" class="form-control-static search-padding">
-        <input id="search" type="text" placeholder="Search" name="search" class="form-control col-lg-4" required>
-        <section class="text-center">
-            <label>Tag</label><input type="radio" name="sortBy" value="tag" checked>
-            <label>Username</label><input type="radio" name="sortBy" value="username">
-            <label>Post Title</label><input type="radio" name="sortBy" value="postTitle">
-        </section>
-        <input id="submit" type="submit" value="Search" class="form-control btn btn-primary">
+
+    <div class="row">
+        <div class="search">
+        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search" />
+         <button type="submit" class="btn btn-primary btn-sm">Search</button>
+        </div>
+    </div>
+
+       <div class="form-inline text-center">
+            <label class="radio">Tag</label><input type="radio" name="sortBy" value="tag" checked>
+            <label class="radio">Username</label><input type="radio" name="sortBy" value="username">
+            <label class="radio">Post Title</label><input type="radio" name="sortBy" value="postTitle">
+        </div>
     </form>
 	<div class="panel-heading text-left">
     	<h3>Recent Posts</h3>
