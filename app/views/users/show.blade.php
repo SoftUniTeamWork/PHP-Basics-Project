@@ -3,10 +3,10 @@
 @section('content')
 	@if(isset($user))
 	<section class="userPanel">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 " >
+        <div class=" col-lg-6" >
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h1 class="panel-title">{{$user->username}}</h1>
+              <h1 class="panel-title"><span class="badge">{{$user->username}}</span></h1>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -44,4 +44,4 @@
 	@else
 		<h1>This user does not exist!</h1>
 	@endif
-@stop 
+@stop
