@@ -84,7 +84,17 @@ class CommentsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$comment = Comment::find($id);
+		if(Auth::check() && (Auth::user()->id == $comment->user_id || Auth::user()->user_level == '1'))
+		{
+			$comment->comment_text = Input::get("text");
+			$comment->save();
+			return Redirect::to('/post/' . $comment->post_id);
+		}
+		else
+		{
+			return Redirect::to('pages.pageNotFound');
+		}
 	}
 
 
@@ -108,7 +118,17 @@ class CommentsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$comment = Comment::find($id);
+		if(Auth::check() && (Auth::user()->id == $comment->user_id || Auth::user()->user_level == '1'))
+		{
+			$postId = $comment->post_id;
+			$comment->delete();
+			return Redirect::to('/post/' . $postId);
+		}
+		else
+		{
+			return Redirect::to('pages.pageNotFound');
+		}
 	}
 
 
