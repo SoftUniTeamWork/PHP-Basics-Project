@@ -1,11 +1,11 @@
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse col-lg-12" role="navigation">
 	<ul class="nav navbar-nav">
 		<li><a href="{{url('/')}}">Home</a></li>
 		<li><a href="{{url('/about')}}">About</a></li>
 		<li><a href="{{url('/credits')}}">Credits</a></li>
 	</ul>
 	@if(Auth::check())
-		<div class="input-group input-group-sm pull-right">
+		<div class="input-group input-group-sm navbar-form navbar-right">
 			<a href="{{url('/user/' . Auth::user()->username)}}" class="btn btn-default form-control-inline">Profile</a>
 			@if(Auth::user()->user_level == '1')
 				<a href="{{url('/post/create')}}" class="btn btn-default form-control-inline" >Create post</a>
