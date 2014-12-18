@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('username', 32);
 			$table->string('email', 256);
 			$table->string('password', 96);
-			$table->string('name', 96);
+			$table->string('name', 96)->nullable();
 			$table->smallInteger('age')->nullable();
 			$table->smallInteger('user_level')->default(0);
 			$table->string('remember_token', 100)->nullable();
