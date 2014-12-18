@@ -45,5 +45,4 @@
 	@endfor
 		<section class="pagination"> {{ $posts->links() }} </section>
 	</section>
-	<script src="{{ URL::asset('js/blog.js') }}"></script>
 @stop

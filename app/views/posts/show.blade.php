@@ -52,11 +52,11 @@
                             </div>
                         @else
                             {{ $comment->author_name }}
-                             @if(Auth::user()->user_level == '1')
-                             <div class="btn-group" role="group" aria-label="...">
-                                <a href="{{ url('/comment/delete/' . $comment->id) }}" class="btn btn-default deleteWarning">Delete</a>
-                                <a href="{{ url('/comment/edit/' . $comment->id) }}" class="btn btn-default">Edit</a>
-                            </div>
+                             @if(Auth::check() && Auth::user()->user_level == '1')
+                                 <div class="btn-group" role="group" aria-label="...">
+                                    <a href="{{ url('/comment/delete/' . $comment->id) }}" class="btn btn-default deleteWarning">Delete</a>
+                                    <a href="{{ url('/comment/edit/' . $comment->id) }}" class="btn btn-default">Edit</a>
+                                </div>
                             @endif
                         @endif
                     </h4>
@@ -74,8 +74,8 @@
                 <input type="text" class="form-control" name="name" placeholder="Name" required/>
                 <input type="email" class="form-control" name="email" placeholder="Email(optional)"/>
             @endif
-            <textarea class="form-control" name="text" required></textarea>
-            <input type="submit" class="form-control" value="Comment" class="btn btn-default"/>
+                <textarea class="form-control" name="text" required></textarea>
+                <input type="submit" class="form-control" value="Comment" class="btn btn-default"/>
         </form>
         </section>
     @else

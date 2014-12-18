@@ -79,10 +79,13 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 		$post = Post::find($id);
-		$tags = $post->tags()->get()->lists('tag_text');
-		$comments = $post->comments()->paginate(5);
+		$tags = array();
+		$comments = array();
+		
 		if(isset($post)) 
 		{
+			$tags = $post->tags()->get()->lists('tag_text');
+			$comments = $post->comments()->paginate(5);
 			$post->visits_counter++;
 			$post->save();
 		}
