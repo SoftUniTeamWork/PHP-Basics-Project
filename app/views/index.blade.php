@@ -3,7 +3,7 @@
 @section('content')
 	<section>
 	@for($i = 0; $i < count($posts); $i++)
-		<article>
+		<article class="container col-lg-12">
 			<h2><a href="{{ url('/post/' . $posts[$i]->id) }}">{{ $posts[$i]->post_title }}</a></h2>
 		    <section class="row">
 		        <section class="group1 col-sm-6 col-md-6">
@@ -17,12 +17,12 @@
 		    </section>
 			<section class="textPanel container col-lg-12">
 				@if(strlen($posts[$i]->post_text) > 800) 
-					{{ substr($posts[$i]->post_text, 0, 800) . ' ...' }}
+					{{ substr($posts[$i]->post_text, 0, 800) }} <a href="{{ url('/post/' . $posts[$i]->id) }}"> ...more</a>
 				@else
 					{{ $posts[$i]->post_text }}
 				@endif
 			</section>
-			<p>
+			<section>
 				<span class="glyphicon glyphicon-tag"></span>
 					@for($j = 0; $j < count($tags[$i]); $j++)
 						@if($j == count($tags[$i]) - 1)
@@ -31,16 +31,15 @@
 							<a href="{{ url('/searchByTag/' . $tags[$i][$j]) }}">{{ $tags[$i][$j] }} </a> ,
 						@endif
 					@endfor
-
-			</p>
-			<div class="btn-group" role="group" aria-label="...">
+			</section>
+			<section class="btn-group" role="group" aria-label="...">
 				@if(Auth::check())
 					@if(Auth::user()->id == $posts[$i]->user_id || Auth::user()->user_level == '1')
 						<a href="{{ url('/post/delete/' . $posts[$i]->id) }}" class="btn btn-default deleteWarning">Delete</a>
 						<a href="{{ url('/post/edit/' . $posts[$i]->id) }}" class="btn btn-default">Edit</a>
 					@endif
 				@endif
-			</div>
+			</section>
 		</article>
 	@endfor
 		<section class="pagination"> {{ $posts->links() }} </section>

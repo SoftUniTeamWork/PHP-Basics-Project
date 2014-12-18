@@ -39,7 +39,7 @@ class PagesController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);
 		if($validator->fails())
 		{
-			return Redirect::to('login')
+			return Redirect::to('/')
 			->withErrors($validator);
 		}
 		else
@@ -55,7 +55,7 @@ class PagesController extends \BaseController {
 			}
 			else
 			{
-				return Redirect::to('login');
+				return Redirect::to('/');
 			}
 		}
 	}

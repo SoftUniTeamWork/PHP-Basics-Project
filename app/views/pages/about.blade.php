@@ -12,7 +12,7 @@
 
         <article class="row">
             <div class="col-lg-8">
-                <h2>What is the project about</h2>
+                <h2>What is the project about?</h2>
                 <p>The project is a part of our Teamwork Project Assignment for the PHP Basics Course at Software University. We have chosen to make a blog for the functionality a blog requires. We met a lot of obstacles on way but the Laravel framework helped us a lot for maintaining order and giving it all the functionality it has now.</p>
             </div>
         </article>

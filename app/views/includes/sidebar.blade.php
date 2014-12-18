@@ -17,10 +17,10 @@
     	<h3>Recent Posts</h3>
 	</div>
     <ol type = "1" class="list-group">
-    @foreach(Post::orderBy('created_at','desc')->paginate(5) as $post)
+    @foreach(Post::orderBy('created_at','desc')->take(5)->get() as $post)
        <li class="list-group-item text-left">
+       <p class="text-center"><span><span class="glyphicon glyphicon-time"></span> {{ date('j M Y h:i', strtotime($post->created_at)) }}</span></p>
            <a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a>
-           <span class="pull-right"><span class="glyphicon glyphicon-time"></span> {{ date('j M Y', strtotime($post->created_at)) }}</span>
        </li>
     @endforeach
     </ol>
@@ -28,9 +28,11 @@
         <h3>Most Visited Posts</h3>
     </div>
     <ol type = "1" class="list-group">
-    @foreach(Post::orderBy('visits_counter','desc')->paginate(5) as $post)
-       <li class="list-group-item text-left"><a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a>
-       <span class="badge pull-right">{{ $post->visits_counter }}</span></li>
+    @foreach(Post::orderBy('visits_counter','desc')->take(5)->get() as $post)
+       <li class="list-group-item text-left">
+            <span class="badge">{{ $post->visits_counter }}</span>
+            <a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a>
+       </li>
 
     @endforeach
     </ol>
@@ -44,11 +46,15 @@
             ?>
         @foreach($tags as $tag => $count)
             @if($count != 1)
-                <li class="list-group-item text-left"><a href="{{ url('/searchByTag/' . $tag) }}">{{$tag}}</a>
-                <span class="badge pull-right">{{ $count }}</span></li></li>
+                <li class="list-group-item text-left">
+                    <span class="badge text-left">{{ $count }}</span>
+                    <a href="{{ url('/searchByTag/' . $tag) }}">{{$tag}}</a>
+                </li>
             @else
-                <li class="list-group-item text-left"><a href="{{ url('/searchByTag/' . $tag) }}">{{$tag}}</a>
-                 <span class="badge pull-right">{{ $count }}</span></li></li></li>
+                <li class="list-group-item text-left">
+                    <span class="badge text-left">{{ $count }}</span>
+                    <a href="{{ url('/searchByTag/' . $tag) }}">{{$tag}}</a>
+                </li>
             @endif
             @endforeach
     </ol>
