@@ -40,7 +40,7 @@ class CommentsController extends \BaseController {
 			if(Auth::check()){
 				$comment->user_id = Auth::user()->id;
 				$comment->comment_type = 0;
-				$comment->author_name = Auth::user()->name;
+				$comment->author_name = Auth::user()->username;
 			}
 			else
 			{
