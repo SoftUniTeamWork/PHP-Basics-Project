@@ -1,17 +1,12 @@
 @extends('layout')
 
 @section('content')
-	@if(isset($user))
 	<section class="userPanel">
+		<form method="post">
         <div class=" col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 " >
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h1 class="panel-title"><span class="badge">{{$user->username}}</span>
-              <span>
-                  @if(Auth::check() && Auth::user()->username == $user->username)
-                      <a href="{{ url('/user/' . $user->username . '/edit') }}" class="btn btn-default form-control">Edit profile</a>
-                  @endif
-              </span></h1>
+              <h1 class="panel-title"><span class="badge">{{$user->username}}</span></h1>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -23,11 +18,11 @@
                     <tbody>
                       <tr>
                         <td>Name:</td>
-                        <td>@if($user->name) {{$user->name}} @else {{'not set'}} @endif</td>
+                        <td><input type="text" name="name" value="@if($user->name) {{$user->name}} @else {{''}} @endif"/></td>
                       </tr>
                       <tr>
-                        <td>Age:</td>
-                        <td>@if($user->age) {{$user->age}} @else {{'not set'}} @endif</td>
+                        <td>Age: </td>
+                        <td>@if($user->age) {{$user->age}} @else {{''}} @endif</td>
                       </tr>
                       <tr>
                         <td>Email:</td>
@@ -39,14 +34,16 @@
                       </tr>
                     </tbody>
                   </table>
-                  <a href="{{ url('/user/' . $user->username . '/comments') }}" class="btn btn-primary">View all commented posts</a>
+                 <span>
+                  @if(Auth::check() && Auth::user()->username == $user->username)
+                      <input type="submit" value="Save changes" class="btn btn-default form-control">
+                  @endif
+              	</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        </form>
     </section>
-	@else
-		<h1>This user does not exist!</h1>
-	@endif
 @stop

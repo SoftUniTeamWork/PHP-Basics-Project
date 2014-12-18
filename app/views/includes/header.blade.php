@@ -6,10 +6,11 @@
 	</ul>
 	@if(Auth::check())
 		<div class="input-group input-group-sm pull-right">
+			<a href="{{url('/user/' . Auth::user()->username)}}" class="btn btn-default form-control-inline">Profile</a>
 			@if(Auth::user()->user_level == '1')
-				<a href="{{url('/post/create')}}" class="btn btn-default form-control" >Create post</a>
+				<a href="{{url('/post/create')}}" class="btn btn-default form-control-inline" >Create post</a>
 			@endif
-			<a href="{{url('/logout')}}" class="btn btn-primary form-control">Logout</a>
+			<a href="{{url('/logout')}}" class="btn btn-primary form-control-inline">Logout</a>
 		</div>
 		
 		@else

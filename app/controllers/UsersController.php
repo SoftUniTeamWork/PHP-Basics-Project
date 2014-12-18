@@ -40,7 +40,10 @@ class UsersController extends \BaseController {
             $user -> email = Input::get('email');
             $user -> password = Hash::make(Input::get('password'));
             $user -> name = Input::get('name');
-
+			$age = DateTime::createFromFormat('d/m/Y', Input::get('age'), new DateTimeZone('Europe/Sofia'))
+			     ->diff(new DateTime('now', new DateTimeZone('Europe/Sofia')))
+			     ->y;
+			$user->age = $age;
             $user -> save();
             return Redirect::to('/login');
         }
@@ -84,9 +87,22 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($username)
 	{
-		//
+		$user = Auth::user();
+		$rules = array('name' => 'min:5');
+		$validator = Validator::make(Input::all(), $rules);
+		if($validator->fails())
+		{
+			return Redirect::to('/user/' . $user->username . 'edit')->withErrors($validator);
+			var_dump($validator);
+		}
+		else
+		{
+			$user->name = Input::get('name');
+			$user->save();
+			return Redirect::to('/user/' . $user->username);
+		}
 	}
 
 

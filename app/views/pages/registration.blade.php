@@ -20,14 +20,10 @@
           <label for="password_confirmation">Confirm Password :</label>
           <input type="password" class="form-control" name="password_confirmation" required>
       </section>
-     <!--  <section class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" name="name">
-      </section>
       <section class="form-group">
-          <label for="name">Age:</label>
+          <label for="name">Birthday:</label>
           <input type="text" id="datepicker" class="form-control" name="age">
-      </section> -->
+      </section>
      <input type="submit" value="Registration" class="btn btn-default text-center registration">
      </form>
 </div>

@@ -53,4 +53,8 @@ Route::get('/comment/edit/{id}', 'PagesController@editComment');
 
 Route::post('/comment/edit/{id}', 'CommentsController@edit');
 
-Route::get('/user/{id}/comments', 'UsersController@showAllComments');
+Route::get('/user/{username}/comments', 'UsersController@showAllComments');
+
+Route::get('/user/{username}/edit', 'PagesController@showEditUser');
+
+Route::post('/user/{username}/edit', 'UsersController@edit');
