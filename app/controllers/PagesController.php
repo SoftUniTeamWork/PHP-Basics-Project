@@ -122,7 +122,7 @@ class PagesController extends \BaseController {
 						$posts[] = $post;
 					}
 				}
-				return View::make('pages.showSimilarPosts')->withPosts($posts);
+				return View::make('pages.showSimilarPosts')->withPosts($posts)->withSearch($input);
 			}
 		}
 		else
@@ -144,5 +144,15 @@ class PagesController extends \BaseController {
     public function editComment($id)
     {
     	return View::make('comments.edit')->withComment(Comment::find($id));
+    }
+
+    public function showEditUser($username)
+    {
+    	if(Auth::check() && Auth::user()->username == $username)
+    	{
+    		return View::make('pages.editUser')->withUser(Auth::user());
+    	}
+    	else
+    		return View::make('pages.pageNotFound');
     }
 }
