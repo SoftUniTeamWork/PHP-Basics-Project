@@ -1,1 +1,3 @@
-$( "#date" ).datepicker();
+ $(function() {
+	$("#datepicker").datepicker();
+});
