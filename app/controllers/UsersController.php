@@ -24,7 +24,8 @@ class UsersController extends \BaseController {
         $rules = array (
             'username' => 'required|min:4|unique:users',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6'
         );
         $validator = Validator::make($input, $rules);
 
@@ -35,7 +36,6 @@ class UsersController extends \BaseController {
         else
         {
             $user = new User;
-
             $user -> username = Input::get('username');
             $user -> email = Input::get('email');
             $user -> password = Hash::make(Input::get('password'));
