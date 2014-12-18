@@ -4,7 +4,7 @@
 	<h1><span class="label label-default">Team London</span></h1>
 	<section class="container col-lg-12" id="staff">
         <article class="row">
-            <div class="col-lg-4"><img class="img-responsive" src="{{ URL::asset('images/images.png') }}" alt=""/></div>
+            <div class="col-lg-4"><img class="img-responsive" src="{{ URL::asset('images/deiv.png') }}" alt=""/></div>
             <div class="col-lg-8">
                 <h2>Deivid Raychev</h2>
                 <p>Deivid is the team leader. He came up with the idea to use Laravel because it would ease our work. He made most of the functionality of the site, made some styilisation and all in all was the mind behind the project.</p>

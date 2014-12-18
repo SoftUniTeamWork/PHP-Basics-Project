@@ -17,7 +17,7 @@
     	<h3>Recent Posts</h3>
 	</div>
     <ol type = "1" class="list-group">
-    @foreach(Post::orderBy('created_at','desc')->paginate(10) as $post)
+    @foreach(Post::orderBy('created_at','desc')->paginate(5) as $post)
        <li class="list-group-item text-left">
            <a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a>
            <span class="pull-right"><span class="glyphicon glyphicon-time"></span> {{ date('j M Y', strtotime($post->created_at)) }}</span>
@@ -28,7 +28,7 @@
         <h3>Most Visited Posts</h3>
     </div>
     <ol type = "1" class="list-group">
-    @foreach(Post::orderBy('visits_counter','desc')->paginate(10) as $post)
+    @foreach(Post::orderBy('visits_counter','desc')->paginate(5) as $post)
        <li class="list-group-item text-left"><a href="{{ url('/post/' . $post->id) }}">{{$post->post_title}}</a>
        <span class="badge pull-right">{{ $post->visits_counter }}</span></li>
 
@@ -40,6 +40,7 @@
     <ol type = "1" class="list-group">
     <?php $tags =  array_count_values(Tag::all()->lists('tag_text'));
             arsort($tags);
+            $tags = array_slice($tags, 0, 5);
             ?>
         @foreach($tags as $tag => $count)
             @if($count != 1)
